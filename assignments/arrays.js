@@ -99,27 +99,17 @@ let carModels = inventory.sort(function(a, b) {
   return modelA < modelB ? -1 : modelA > modelB ? 1 : 0;
 });
 
-carModels.forEach(function(car) {
-  console.log(car.car_year, car.car_model);
-});
+carModels.map(car => console.log(car.car_year, car.car_model));
 console.log("\n\n-----CHALLENGE 4-----");
 
 // ==== Challenge 4 ====
 // The accounting team needs all the years from every car on the lot. Create a new array from the dealer data containing only the car years and log the result in the console.
-let carYears = [];
-inventory.forEach(function(car) {
-  carYears.push(car.car_year);
-});
+let carYears = inventory.filter(car => car.car_year);
 console.log(carYears.sort((a, b) => a - b), "\n-----CHALLENGE 5-----");
 
 // ==== Challenge 5 ====
 // The car lot manager needs to find out how many cars are older than the year 2000. Using the carYears array you just created, find out how many cars were made before the year 2000 by populating the array oldCars and logging it's length.
-let oldCars = [];
-inventory.forEach(function(car) {
-  if (car.car_year < 2000) {
-    oldCars.push(car);
-  }
-});
+const oldCars = inventory.filter(car => car.car_year < 2000);
 
 console.log(
   "Cars made before 2000: ",
@@ -129,14 +119,11 @@ console.log(
 
 // ==== Challenge 6 ====
 // A buyer is interested in seeing only BMW and Audi cars within the inventory.  Return an array that only contains BMW and Audi cars.  Once you have populated the BMWAndAudi array, use JSON.stringify() to show the results of the array in the console.
-let BMWAndAudi = [];
 
-inventory.forEach(function(car) {
-  if (car.car_make === "BMW" || car.car_make === "Audi") {
-    BMWAndAudi.push(car);
-  }
-});
+const BMWAndAudi = inventory.filter(
+  car => car.car_make === "BMW" || car.car_make === "Audi"
+);
 JSON.stringify(BMWAndAudi);
-BMWAndAudi.forEach(function(car) {
-  console.log(`${car.car_year} ${car.car_make} ${car.car_model}`);
-});
+BMWAndAudi.map(car =>
+  console.log(`${car.car_year} ${car.car_make} ${car.car_model}`)
+);

@@ -79,9 +79,11 @@ function Person(name, age) {
 
 const susan = new Person("Susan", 70);
 susan.child = new Person("George", 50);
-george = susan.child;
+
+const george = susan.child;
 george.child = new Person("Sam", 30);
-sam = george.child;
+
+const sam = george.child;
 
 george.speak();
 susan.speak();
